@@ -130,6 +130,7 @@ body {
   padding-bottom: 100px;
 
   background: rgba(35, 37, 39, 0.795);
+  border-radius: 75px;
 }
 
 .hero-content {
@@ -157,4 +158,60 @@ body {
   position: relative;
   margin-bottom: 1rem;
   line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cta-primary,
+.cta-secondary {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: 0.6s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+}
+
+.cta-primary {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+}
+
+.cta-secondary {
+  background: transparent;
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+  backdrop-filter: blur(5px);
+}
+
+.cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
