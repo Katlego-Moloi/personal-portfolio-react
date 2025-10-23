@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -42,7 +44,10 @@ export const Hero = () => {
             Katlego Moloi
           </motion.h1>
 
-          <motion.h2> Software Engineer & Creative </motion.h2>
+          <motion.h2 style={{ color: "#654ea3" }}>
+            {" "}
+            Software Engineer & Creative{" "}
+          </motion.h2>
 
           <motion.p style={{ marginBottom: "30px" }}>
             a passionate IT professional and developer dedicated to creating
@@ -64,7 +69,7 @@ export const Hero = () => {
             </motion.a>
 
             <motion.a
-              href="#projects"
+              href="#contact"
               className="cta-secondary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -96,6 +101,15 @@ export const Hero = () => {
               <i className="fab fa-instagram"></i>
             </motion.a>
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="hero-image-container"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 0, x: 50 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <div className="code-display"></div>
         </motion.div>
       </div>
     </motion.section>
