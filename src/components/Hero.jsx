@@ -104,10 +104,34 @@ export const Hero = () => {
         <motion.div
           className="hero-image-container"
           initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="code-display"></div>
+          <div className="hero-image">
+            {/* 3D model will be added here at some point */}
+            <div
+              style={{
+                display: "block",
+                backgroundColor: "#654ea3",
+                width: "100%",
+                height: "100%",
+              }}
+            ></div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="floating-card"
+          animate={{ y: [0, -10, 0], rotate: [0, 2, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          <div className="card-content">
+            <span className="card-icon"> 💻 </span>
+            <span className="card-text">
+              {" "}
+              Currently working on something awesome!
+            </span>
+          </div>
         </motion.div>
       </div>
     </motion.section>
