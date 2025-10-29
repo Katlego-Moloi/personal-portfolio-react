@@ -48,7 +48,7 @@ export const Projects = () => {
           <motion.div
             className="project-image"
             style={{
-              backgroundImage: "url('/images/money-mart.png')",
+              backgroundImage: "url('/images/money-mart.webp')",
             }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           />
@@ -59,6 +59,12 @@ export const Projects = () => {
           </p>
           <div className="project-tech">
             <span>WebStudio</span>
+            <motion.a
+              href="https://www.moneymartloansandinvestments.co.za/"
+              target="_blank"
+            >
+              <i className="fab fa-up-right-from-square"></i>
+            </motion.a>
           </div>
         </motion.div>
 
@@ -70,7 +76,7 @@ export const Projects = () => {
           <motion.div
             className="project-image"
             style={{
-              backgroundImage: "url('/images/kovsie-cash-web.png')",
+              backgroundImage: "url('/images/kovsie-cash-web.webp')",
             }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           />
@@ -88,6 +94,12 @@ export const Projects = () => {
             <span>SQLlite</span>
             <span>MSSQL</span>
             <span>Bootstrap</span>
+            <motion.a
+              href="https://github.com/Katlego-Moloi/KovsieCash_WebApp"
+              target="_blank"
+            >
+              <i className="fab fa-up-right-from-square"></i>
+            </motion.a>
           </div>
         </motion.div>
 
@@ -99,7 +111,7 @@ export const Projects = () => {
           <motion.div
             className="project-image"
             style={{
-              backgroundImage: "url('/images/kovsie-cash-mobile.png')",
+              backgroundImage: "url('/images/kovsie-cash-mobile.webp')",
             }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           />
@@ -113,6 +125,12 @@ export const Projects = () => {
           <div className="project-tech">
             <span>Android Studio</span>
             <span>SQLlite</span>
+            <motion.a
+              href="https://github.com/Katlego-Moloi/KovsieCash_MobileApp"
+              target="_blank"
+            >
+              <i className="fab fa-up-right-from-square"></i>
+            </motion.a>
           </div>
         </motion.div>
       </motion.div>
