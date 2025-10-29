@@ -12,6 +12,7 @@ function App() {
 
   useEffect(() => {
     setIsLoaded(true);
+    console.log(import.meta.env.VITE_EMAILJS_SERVICE_ID);
     emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
 
