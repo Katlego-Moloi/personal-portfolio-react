@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { emailjs } from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -96,8 +97,7 @@ export const Contact = () => {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          {" "}
-          Get in Touch{" "}
+          Get in Touch
         </motion.h2>
 
         <motion.form className="contact-form" onSubmit={handleSubmit}>
@@ -105,27 +105,30 @@ export const Contact = () => {
             type="text"
             name="name"
             placeholder="Your Name"
+            value={formData.name}
             required
             whileFocus={{ scale: 1.02 }}
             onChange={handleInputChange}
-          ></motion.input>
+          />
 
           <motion.input
-            type="text"
+            type="email"
             name="email"
             placeholder="Your email address"
+            value={formData.email}
             required
             whileFocus={{ scale: 1.02 }}
             onChange={handleInputChange}
-          ></motion.input>
+          />
 
           <motion.textarea
             name="message"
             placeholder="Type your message here..."
+            value={formData.message}
             required
             whileFocus={{ scale: 1.02 }}
             onChange={handleInputChange}
-          ></motion.textarea>
+          />
 
           <motion.button
             className="submit-btn"
@@ -134,7 +137,6 @@ export const Contact = () => {
             whileTap={{ scale: 0.95 }}
             disabled={formStatus.submitting}
           >
-            Submit
             {formStatus.submitting ? "Sending..." : "Send Message"}
           </motion.button>
 
@@ -142,7 +144,9 @@ export const Contact = () => {
             <motion.div
               className={`form-status ${
                 formStatus.success ? "success" : "error"
-              } `}
+              }`}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
             >
               {formStatus.message}
             </motion.div>
