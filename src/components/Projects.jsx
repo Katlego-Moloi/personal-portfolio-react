@@ -48,7 +48,7 @@ export const Projects = () => {
           <motion.div
             className="project-image"
             style={{
-              backgroundImage: "url('public/images/money-mart.png')",
+              backgroundImage: "url('/images/money-mart.png')",
             }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           />
@@ -70,7 +70,7 @@ export const Projects = () => {
           <motion.div
             className="project-image"
             style={{
-              backgroundImage: "url('public/images/kovsie-cash-web.png')",
+              backgroundImage: "url('/images/kovsie-cash-web.png')",
             }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           />
@@ -99,7 +99,7 @@ export const Projects = () => {
           <motion.div
             className="project-image"
             style={{
-              backgroundImage: "url('public/images/kovsie-cash-mobile.png')",
+              backgroundImage: "url('/images/kovsie-cash-mobile.png')",
             }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           />
