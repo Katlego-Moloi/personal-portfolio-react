@@ -452,11 +452,17 @@ body.loading::before {
   flex-grow: 1;
 }
 
-.project-tech {
-  padding: 0 1.5rem 1.5rem;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+.project-tech a {
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.project-tech a:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .project-tech span {
