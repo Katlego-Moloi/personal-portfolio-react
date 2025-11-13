@@ -1,30 +1,59 @@
-# React + TypeScript + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React and Vite. My first React project exploring modern web development practices.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 + TypeScript
+- Vite
+- Framer Motion
+- EmailJS
+- CSS3
 
-## Expanding the ESLint configuration
+## 📦 Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```bash
+# Clone the repo
+git clone https://github.com/Katlego-Moloi/portfolio.git
+cd portfolio
 
-- Configure the top-level `parserOptions` property like this:
+# Install dependencies
+pnpm install
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
+# Create .env file
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+
+# Run dev server
+pnpm dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🛠️ Commands
+
+```bash
+pnpm dev      # Start dev server at localhost:5173
+pnpm build    # Build for production
+pnpm preview  # Preview production build
+```
+
+## 📧 EmailJS Setup
+
+1. Sign up at [EmailJS](https://www.emailjs.com/)
+2. Create an email service and template
+3. Add credentials to `.env` file
+
+## 🚢 Deployment
+
+Built for deployment on [Vercel](https://vercel.com). Just push to GitHub and import the repo.
+
+## 📝 License
+
+MIT
+
+## 👤 Author
+
+**Katlego Moloi**
+- Website: [JCMK](https://jcmk.co.za)
+- GitHub: [@Katlego-Moloi](https://github.com/Katlego-Moloi)
+- LinkedIn: [Tubatse Katlego Moloi](https://www.linkedin.com/in/tubatse-katlego-moloi/)
