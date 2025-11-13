@@ -89,7 +89,7 @@ export const Hero = () => {
             </motion.a>
 
             <motion.a href="https://leetcode.com/u/user6473KO/" target="_blank">
-              <i className="fab fa-terminal"></i>
+              <i className="fas fa-terminal"></i>
             </motion.a>
 
             <motion.a
