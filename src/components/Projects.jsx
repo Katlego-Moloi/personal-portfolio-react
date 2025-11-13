@@ -63,7 +63,7 @@ export const Projects = () => {
               href="https://www.moneymartloansandinvestments.co.za/"
               target="_blank"
             >
-              <i className="fab fa-up-right-from-square"></i>
+              <i className="fas fa-external-link-alt"></i>
             </motion.a>
           </div>
         </motion.div>
@@ -98,7 +98,7 @@ export const Projects = () => {
               href="https://github.com/Katlego-Moloi/KovsieCash_WebApp"
               target="_blank"
             >
-              <i className="fab fa-up-right-from-square"></i>
+              <i className="fas fa-external-link-alt"></i>
             </motion.a>
           </div>
         </motion.div>
@@ -129,7 +129,7 @@ export const Projects = () => {
               href="https://github.com/Katlego-Moloi/KovsieCash_MobileApp"
               target="_blank"
             >
-              <i className="fab fa-up-right-from-square"></i>
+              <i className="fas fa-external-link-alt"></i>
             </motion.a>
           </div>
         </motion.div>
