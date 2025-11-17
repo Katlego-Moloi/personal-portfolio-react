@@ -274,8 +274,8 @@ body.loading::before {
 
 .floating-card {
   position: absolute;
-  bottom: 2rem;
-  right: 1rem;
+  bottom: 5rem;
+  right: 5rem;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   padding: 1rem 1.5rem;
@@ -333,6 +333,7 @@ body.loading::before {
 
   .floating-card {
     position: relative;
+    bottom: 2rem;
   }
 }
 
@@ -452,17 +453,35 @@ body.loading::before {
   flex-grow: 1;
 }
 
+.project-tech {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+}
+
 .project-tech a {
   color: var(--accent-color);
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  font-size: 1.5rem;
+  margin-left: auto;
+  z-index: 20;
 }
 
 .project-tech a:hover {
   color: var(--primary-color);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.1);
 }
 
 .project-tech span {

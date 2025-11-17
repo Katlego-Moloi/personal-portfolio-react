@@ -58,10 +58,12 @@ export const Projects = () => {
             project duration and cost.
           </p>
           <div className="project-tech">
-            <span>WebStudio</span>
+            <div className="project-tech-tags">
+              <span>WebStudio</span>
+            </div>
             <motion.a
               href="https://www.moneymartloansandinvestments.co.za/"
-              target="_blank"             
+              target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -93,13 +95,15 @@ export const Projects = () => {
             client-server architecture for secure and efficient operations.
           </p>
           <div className="project-tech">
-            <span>ASP.NET MVC</span>
-            <span>SQLlite</span>
-            <span>MSSQL</span>
-            <span>Bootstrap</span>
+            <div className="project-tech-tags">
+              <span>ASP.NET MVC</span>
+              <span>SQLlite</span>
+              <span>MSSQL</span>
+              <span>Bootstrap</span>
+            </div>
             <motion.a
               href="https://github.com/Katlego-Moloi/KovsieCash_WebApp"
-              target="_blank"             
+              target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -133,7 +137,7 @@ export const Projects = () => {
             <span>SQLlite</span>
             <motion.a
               href="https://github.com/Katlego-Moloi/KovsieCash_MobileApp"
-              target="_blank"             
+              target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

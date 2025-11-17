@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ThreeScene } from "./heromodel";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -108,15 +109,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="hero-image">
-            {/* 3D model will be added here at some point */}
-            <div
-              style={{
-                display: "block",
-                backgroundColor: "#654ea3",
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
+            <ThreeScene />
           </div>
         </motion.div>
 
