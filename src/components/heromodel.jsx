@@ -15,6 +15,18 @@ export const ThreeScene = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // DEBUG: Log container dimensions
+    console.log("=== THREE.JS DEBUG ===");
+    console.log("Container dimensions:", {
+      width: containerRef.current.clientWidth,
+      height: containerRef.current.clientHeight,
+      offsetWidth: containerRef.current.offsetWidth,
+      offsetHeight: containerRef.current.offsetHeight,
+    });
+    console.log(
+      "Container computed style:",
+      window.getComputedStyle(containerRef.current)
+    );
     // Scene setup
     const scene = new THREE.Scene();
     sceneRef.current = scene;
@@ -38,6 +50,11 @@ export const ThreeScene = () => {
       containerRef.current.clientWidth,
       containerRef.current.clientHeight
     );
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.width = "100%";
+    renderer.domElement.style.height = "100%";
 
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
@@ -50,8 +67,8 @@ export const ThreeScene = () => {
 
       (gltf) => {
         const model = gltf.scene;
-        model.position.set(0, -1, 0);
-        model.scale.set(1, 1, 1);
+        model.position.set(0, -3, 0);
+        model.scale.set(1.75, 1.75, 1.75);
         scene.add(model);
         modelRef.current = model;
       },
