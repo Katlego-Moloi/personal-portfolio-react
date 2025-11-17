@@ -304,10 +304,15 @@ body.loading::before {
   flex: 1;
   position: relative;
   max-width: 600px;
+  min-height: 500px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .hero-image {
   width: 100%;
+  background-color: white;
 }
 
 /* Hero Media Queries */

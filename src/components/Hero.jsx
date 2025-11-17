@@ -108,9 +108,7 @@ export const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="hero-image">
-            <ThreeScene />
-          </div>
+          <ThreeScene />
         </motion.div>
 
         <motion.div

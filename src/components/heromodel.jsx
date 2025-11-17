@@ -1,12 +1,16 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export const ThreeScene = () => {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
   const rendererRef = useRef(null);
-  const meshRef = useRef(null);
+  const modelRef = useRef(null);
+  const controlsRef = useRef(null);
+  const animationFrameRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -15,81 +19,156 @@ export const ThreeScene = () => {
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    // Camera setup
+    // Camera setup - adjusted for better view
     const camera = new THREE.PerspectiveCamera(
       75,
       containerRef.current.clientWidth / containerRef.current.clientHeight,
       0.1,
       1000
     );
-    camera.position.z = 5;
+    camera.position.set(0, 0, 10);
     cameraRef.current = camera;
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
-      alpha: true, // Transparent background
+      alpha: true,
     });
     renderer.setSize(
       containerRef.current.clientWidth,
       containerRef.current.clientHeight
     );
-    renderer.setPixelRatio(window.devicePixelRatio);
+
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Example: Create a rotating cube
-    const geometry = new THREE.BoxGeometry(2, 2, 2);
-    const material = new THREE.MeshNormalMaterial();
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    meshRef.current = cube;
+    const loader = new GLTFLoader();
+    loader.load(
+      //"public/models/nebula_core_gltf/scene.gltf",
+      //"public/models/commodore_pet_gltf/scene.gltf",
+      "models/old_computer_gltf/scene.gltf",
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      (gltf) => {
+        const model = gltf.scene;
+        model.position.set(0, -1, 0);
+        model.scale.set(1, 1, 1);
+        scene.add(model);
+        modelRef.current = model;
+      },
+      function (xhr) {
+        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      },
+      function (error) {
+        console.error("Model failed to load:", error);
+      }
+    );
+
+    // Enhanced lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(5, 5, 5);
-    scene.add(pointLight);
+    const pointLight1 = new THREE.PointLight(0x7c3aed, 2);
+    pointLight1.position.set(3, 3, 3);
+    scene.add(pointLight1);
 
-    // Animation loop
+    const pointLight2 = new THREE.PointLight(0xf472b6, 1.5);
+    pointLight2.position.set(-3, -2, 2);
+    scene.add(pointLight2);
+
+    // Add OrbitControls for mouse interaction
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.07;
+    controls.enablePan = true;
+    controls.enableZoom = true;
+    controlsRef.current = controls;
+    controls.target.set(0, 0, 0);
+    controls.update();
+
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameRef.current = requestAnimationFrame(animate);
 
-      // Rotate the cube
-      if (meshRef.current) {
-        meshRef.current.rotation.x += 0.01;
-        meshRef.current.rotation.y += 0.01;
+      if (modelRef.current) {
+        modelRef.current.rotation.y += 0.005;
       }
+
+      if (controlsRef.current) controlsRef.current.update();
 
       renderer.render(scene, camera);
     };
     animate();
 
-    // Handle window resize
-    const handleResize = () => {
-      if (!containerRef.current) return;
-
-      camera.aspect =
-        containerRef.current.clientWidth / containerRef.current.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(
-        containerRef.current.clientWidth,
-        containerRef.current.clientHeight
-      );
-    };
-    window.addEventListener("resize", handleResize);
-
     // Cleanup
     return () => {
-      window.removeEventListener("resize", handleResize);
-      if (containerRef.current && renderer.domElement) {
-        containerRef.current.removeChild(renderer.domElement);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
+
+      // Dispose model geometries, materials and textures safely
+      const model = modelRef.current;
+      if (model) {
+        model.traverse((child) => {
+          if (child.isMesh) {
+            if (child.geometry) child.geometry.dispose();
+
+            if (child.material) {
+              const disposeMaterial = (mat) => {
+                if (!mat) return;
+                if (mat.map) mat.map.dispose();
+                if (mat.lightMap)
+                  mat.lightMap.dispose && mat.lightMap.dispose();
+                if (mat.bumpMap) mat.bumpMap.dispose && mat.bumpMap.dispose();
+                if (mat.normalMap)
+                  mat.normalMap.dispose && mat.normalMap.dispose();
+                if (mat.specularMap)
+                  mat.specularMap.dispose && mat.specularMap.dispose();
+                if (mat.envMap) mat.envMap.dispose && mat.envMap.dispose();
+                mat.dispose();
+              };
+
+              if (Array.isArray(child.material)) {
+                child.material.forEach(disposeMaterial);
+              } else {
+                disposeMaterial(child.material);
+              }
+            }
+          }
+        });
+
+        // Remove from scene
+        scene.remove(model);
+      }
+
+      // Dispose controls
+      if (controlsRef.current) {
+        try {
+          controlsRef.current.dispose();
+        } catch (e) {}
+        controlsRef.current = null;
+      }
+
+      // Remove renderer DOM element and dispose renderer
+      if (rendererRef.current) {
+        try {
+          const dom = rendererRef.current.domElement;
+          if (
+            dom &&
+            containerRef.current &&
+            containerRef.current.contains(dom)
+          ) {
+            containerRef.current.removeChild(dom);
+          }
+        } catch (e) {
+          // ignore
+        }
+        rendererRef.current.dispose();
+      }
+
+      // Clear refs
+      modelRef.current = null;
+      rendererRef.current = null;
+      cameraRef.current = null;
+      sceneRef.current = null;
     };
   }, []);
 
@@ -99,7 +178,9 @@ export const ThreeScene = () => {
       style={{
         width: "100%",
         height: "100%",
-        display: "block",
+        minHeight: "500px",
+        display: "flex",
+        position: "relative",
       }}
     />
   );
