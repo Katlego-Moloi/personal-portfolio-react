@@ -19,10 +19,10 @@ function App() {
 
   return (
     <div className={`app ${isLoaded ? "loaded" : ""}`}>
-      <Parallax pages={4}>
+      <Parallax pages={5}>
         <ParallaxLayer
           speed={0.5}
-          factor={6}
+          factor={7}
           style={{
             zIndex: -2,
             backgroundImage: 'url("images/background-collage.webp")',
@@ -32,7 +32,7 @@ function App() {
           }}
         ></ParallaxLayer>
 
-        <ParallaxLayer factor={4} offset={0}>
+        <ParallaxLayer factor={5} offset={0}>
           <Navbar />
           <Hero />
           <Projects />
