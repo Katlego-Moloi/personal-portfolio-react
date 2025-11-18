@@ -19,32 +19,24 @@ function App() {
 
   return (
     <div className={`app ${isLoaded ? "loaded" : ""}`}>
-      <Parallax pages={3}>
+      <Parallax pages={4}>
         <ParallaxLayer
-          speed={0.2}
-          factor={3.5}
+          speed={0.5}
+          factor={6}
           style={{
             zIndex: -2,
             backgroundImage: 'url("images/background-collage.webp")',
-            backgroundSize: "cover",
+            backgroundRepeat: "repeat-y",
+            backgroundSize: "100% auto",
             backgroundPosition: "center top",
           }}
         ></ParallaxLayer>
 
-        <ParallaxLayer factor={1}>
+        <ParallaxLayer factor={4} offset={0}>
           <Navbar />
           <Hero />
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={1} factor={1}>
           <Projects />
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={2} factor={1}>
           <Contact />
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={2.9} factor={0.2}>
           <motion.footer
             className="footer"
             initial={{ opacity: 0 }}
