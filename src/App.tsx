@@ -6,6 +6,7 @@ import { Navbar } from "./components/Navbar";
 import { Projects } from "./components/Projects";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,21 +19,42 @@ function App() {
 
   return (
     <div className={`app ${isLoaded ? "loaded" : ""}`}>
-      <Navbar />
+      <Parallax pages={4}>
+        <ParallaxLayer
+          speed={0.2}
+          factor={2.5}
+          style={{
+            zIndex: -1,
+            backgroundImage: 'url("images/collage-background.webp")',
+            backgroundSize: "cover",
+            backgroundPosition: "center top",
+            height: "100%",
+            width: "100%",
+          }}
+        ></ParallaxLayer>
 
-      <Hero />
-      <Projects />
-      <Contact />
+        <ParallaxLayer>
+          <Navbar />
+          <Hero />
+        </ParallaxLayer>
 
-      <motion.footer
-        className="footer"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <p>&copy; 2025 JCMK. All rights reserved.</p>
-      </motion.footer>
+        <ParallaxLayer offset={1}>
+          <Projects />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={2}>
+          <Contact />
+          <motion.footer
+            className="footer"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p>&copy; 2025 JCMK. All rights reserved.</p>
+          </motion.footer>
+        </ParallaxLayer>
+      </Parallax>
     </div>
   );
 }
