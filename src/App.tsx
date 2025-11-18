@@ -21,7 +21,7 @@ function App() {
     <div className={`app ${isLoaded ? "loaded" : ""}`}>
       <Parallax pages={5}>
         <ParallaxLayer
-          speed={0.5}
+          speed={0.25}
           factor={7}
           style={{
             zIndex: -2,

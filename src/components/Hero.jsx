@@ -89,6 +89,13 @@ export const Hero = () => {
               <i className="fab fa-linkedin"></i>
             </motion.a>
 
+            <motion.a
+              href="https://www.credly.com/users/tubatse-katlego-moloi"
+              target="_blank"
+            >
+              <i className="fas fa-certificate"></i>
+            </motion.a>
+
             <motion.a href="https://leetcode.com/u/user6473KO/" target="_blank">
               <i className="fas fa-terminal"></i>
             </motion.a>
