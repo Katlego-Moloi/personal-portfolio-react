@@ -126,7 +126,6 @@ body.loading::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5%;
   position: relative;
   overflow: hidden;
 }
@@ -139,16 +138,15 @@ body.loading::before {
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
-  padding-top: 100px;
 }
 
 .hero-content {
   flex: 1;
   text-align: left;
-  max-width: 100%;
+  max-width: 800px;
   position: relative;
   z-index: 2;
-  padding: 50px 30px;
+  padding: 50px 50px;
 
   background: rgba(35, 37, 39, 0.795);
   border-radius: 75px;
@@ -299,7 +297,7 @@ body.loading::before {
 .hero-image-container {
   flex: 1;
   position: relative;
-  max-width: 700px;
+  max-width: 100%;
   min-height: 500px;
   height: 600px;
   display: flex;
@@ -623,7 +621,7 @@ body.loading::before {
 
 .footer {
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   background: var(--background);
   color: var(--text-color);
   border-top: 1px solid var(--card-border);

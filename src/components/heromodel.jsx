@@ -61,14 +61,13 @@ export const ThreeScene = () => {
 
     const loader = new GLTFLoader();
     loader.load(
-      //"public/models/nebula_core_gltf/scene.gltf",
-      //"public/models/commodore_pet_gltf/scene.gltf",
-      "models/old_computer_gltf/scene.gltf",
+      "models/commodore_pet_gltf/scene.gltf",
+      //"models/old_computer_gltf/scene.gltf",
 
       (gltf) => {
         const model = gltf.scene;
-        model.position.set(0, -3, 0);
-        model.scale.set(1.75, 1.75, 1.75);
+        model.position.set(-4, -3, 0);
+        model.scale.set(1.5, 1.5, 1.5);
         scene.add(model);
         modelRef.current = model;
       },
