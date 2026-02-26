@@ -7,6 +7,7 @@ import { Projects } from "./components/Projects";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { Certifications } from "./components/Certifications";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,6 +37,7 @@ function App() {
           <Navbar />
           <Hero />
           <Projects />
+          <Certifications />
           <Contact />
           <motion.footer
             className="footer"
