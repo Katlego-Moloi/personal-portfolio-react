@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import required modules
+import { EffectCards } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-cards";
+
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -53,6 +63,26 @@ const credlyCerts = [
   {
     id: "edd5250f-eb13-4dbb-9867-3f1fb64f5b4e",
     label: "Credly Badge 4",
+  },
+  {
+    id: "f5c1c793-9891-496c-92d5-a895c8220277",
+    label: "Credly Badge 5",
+  },
+  {
+    id: "cae44ce5-cbdd-42cc-824d-13e484395021",
+    label: "Credly Badge 6",
+  },
+  {
+    id: "8f91437f-b25f-4bf3-8941-91cd4b9b52df",
+    label: "Credly Badge 7",
+  },
+  {
+    id: "e4486d10-9200-4a62-8017-41b0c78e6afa",
+    label: "Credly Badge 8",
+  },
+  {
+    id: "ca123802-5039-4952-83ff-ac7a417a9090",
+    label: "Credly Badge 9",
   },
 ];
 
@@ -154,30 +184,42 @@ export const Certifications = () => {
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <h3 className="cert-group-title">Other Certifications</h3>
-        <motion.div
-          className="credly-grid"
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
+        <h3 className="cert-group-title">CompTIA</h3>
+        <Swiper
+          effect={"cards"}
+          grabCursor={true}
+          modules={[EffectCards]}
+          className="mySwiper"
         >
           {credlyCerts.map((cert) => (
-            <motion.div
-              key={cert.id}
-              className="credly-badge-wrapper"
-              variants={fadeInUp}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            >
-              <div
-                data-iframe-width="150"
-                data-iframe-height="270"
-                data-share-badge-id={cert.id}
-                data-share-badge-host="https://www.credly.com"
-              />
-            </motion.div>
+            <SwiperSlide>
+              <motion.div
+                key={cert.id}
+                className="credly-badge-wrapper"
+                variants={fadeInUp}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div
+                  data-iframe-width="320"
+                  data-iframe-height="300"
+                  data-share-badge-id={cert.id}
+                  data-share-badge-host="https://www.credly.com"
+                />
+              </motion.div>
+              <motion.div
+                style={{
+                  position: "absolute",
+                  bottom: "3px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  zIndex: 10,
+                }}
+              >
+                <i class="fa-solid fa-hand"></i>
+              </motion.div>
+            </SwiperSlide>
           ))}
-        </motion.div>
+        </Swiper>
       </motion.div>
     </motion.section>
   );
